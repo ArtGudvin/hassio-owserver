@@ -8,7 +8,7 @@
 ![armv7][armv7-shield]
 ![i386][i386-shield]
 
-Provides owserver to read 1-Wire devices over DS2480B-based bus master serial device..
+Provides owserver to read 1-Wire devices over multiple DS9490-based bus master USB device..
 
 ## About
 
