@@ -25,8 +25,8 @@ else
     bashio::log.info "Configuring ${device} device"
     device=$(bashio::string.replace ${device} '/' '\/')
     sed -i "s/%%device%%/device = ${device}/g" /etc/owfs.conf
-    sed -i "s/%%device%%/device = \/dev\/bus\/usb\/001\/004/g" /etc/owfs.conf
-    sed -i "s/%%device%%/device = \/dev\/bus\/usb\/001\/005/g" /etc/owfs.conf    
+    #sed -i "s/%%device%%/device = \/dev\/bus\/usb\/001\/004/g" /etc/owfs.conf
+    #sed -i "s/%%device%%/device = \/dev\/bus\/usb\/001\/005/g" /etc/owfs.conf    
 fi
 
 bashio::log.info "Configuring temperature scale: ${temperature_scale}"
