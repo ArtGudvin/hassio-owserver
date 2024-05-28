@@ -18,7 +18,7 @@ options:
   temperature_scale: Celsius
 schema:
   owhttpd: bool
-#  device: device
+  device: device
   device_type: list(serial_or_i2c|usb|ha7net|fake)
   temperature_scale: list(Celsius|Fahrenheit|Kelvin|Rankine)
   ha7net_server: str?
