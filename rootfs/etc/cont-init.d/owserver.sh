@@ -3,7 +3,7 @@
 #declare device
 declare device_type
 declare temperature_scale
-#device=$(bashio::config 'device')
+device=$(bashio::config 'device')
 device_type=$(bashio::config 'device_type')
 temperature_scale=$(bashio::config 'temperature_scale')
 
@@ -21,11 +21,13 @@ elif bashio::var.equals "${device_type}" "ha7net"; then
         bashio::log.error "No ha7net server provided, using FAKE device instead!"
         sed -i "s/%%device%%/FAKE = DS18B20,DS2405/g" /etc/owfs.conf
     fi
-#else
-#    bashio::log.info "Configuring ${device} device"
-#    device=$(bashio::string.replace ${device} '/' '\/')
-#    sed -i "s/%%device%%/device = ${device}/g" /etc/owfs.conf
-#fi
+else
+    bashio::log.info "Configuring ${device} device"
+    device=$(bashio::string.replace ${device} '/' '\/')
+    sed -i "s/%%device%%/device = ${device}/g" /etc/owfs.conf
+    sed -i "s/%%device%%/device = \/dev\/bus\/usb\/001\/004/g" /etc/owfs.conf
+    sed -i "s/%%device%%/device = \/dev\/bus\/usb\/001\/005/g" /etc/owfs.conf    
+fi
 
 bashio::log.info "Configuring temperature scale: ${temperature_scale}"
 sed -i "s/%%temperature_scale%%/${temperature_scale}/g" /etc/owfs.conf
